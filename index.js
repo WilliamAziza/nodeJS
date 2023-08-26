@@ -2,7 +2,14 @@
 const http = require('http')
 const handleAllRequests =(requestObject, responseObject)=>{
 console.log('Hi, I just received a request');
-responseObject.write('Kofi is a boy');
+const url = requestObject.url;
+if (url==='/'){
+    responseObject.write('<h1>THIS IS THE HOME PAGE</h1>')
+}else if(url==='/login'){
+    requestObject.write('<h2>THIS IS THE LOGIN IN PAGE</h2>')
+}else {
+    requestObject.write ('<h1>Error</h1>')
+}
 responseObject.end();
 }
 
